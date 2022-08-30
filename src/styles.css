@@ -2,8 +2,10 @@
   max-width: 800px;
   min-width: 500px;
   margin: 0 auto;
-  padding-top: 20px;
+  padding: 20px;
   background-color: #5682d7;
+  border-radius: 10px;
+
   color: white;
   font-family: Helvetica, sans-serif;
 }
