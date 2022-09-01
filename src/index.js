@@ -98,6 +98,8 @@ function temp(response) {
   let feelLike = document.querySelector("#feel");
   let tempFeelLike = Math.round(response.data.main.feels_like);
   feelLike.innerHTML = `${tempFeelLike}°`;
+  let icon = document.querySelector("#icon");
+  icon.innerHTML=response.data
 }
 
 let currentButton = document.querySelector("#current-button");
