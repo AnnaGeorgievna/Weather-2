@@ -14,10 +14,10 @@
     <link rel="stylesheet" href="src/styles.css" />
   </head>
   <body>
-    <div class="body">
+    <div class="appPage">
         <form id="input-form">
             <input type="text"
-            placeholder="Enter a city" 
+            placeholder="Enter a city..." 
             autofocus="on"
             class="city-search shadow-sm" id="city-search"/>
         <button type ="submit" id="input-button" class="btn btn-primary">Search</button>
@@ -28,74 +28,52 @@
       <h2>Today</h2>
       <div class="current">
         <div class="row">
-          <div class="col-6">
-              <h4 id="icon"><i class="fa-solid fa-sun"></i><h4></div>
-          <div class="col-6">
-              <div class="row">
-                <div class="col-4">
-                    <h3>  <span id="temp">21</span>
-                      <span id="celsius">C°</span> /
-                      <span id="farenheit">F°</span>
-                    </br>Sun</h3>
+          <div class="col-4">
+              <img src="" id="icon" alt="" width="50"/>
+              <span id="temp"><strong>21</strong></span>
+              <span id="celsius">C°</span></br>
+              <span id=info>Sun</span>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="col-4">
       <ul class="wind">
         <li class=feelLike>
-          Feel like
-          <spam id=feel>20°</span>
+          <img src="svg/temperature.svg" width="20px" />
+          Feels like
+          <span id=feel>20°</span>
         </li>
         <li class=humidity>
+          <img src="svg/humidity.svg" width="20px" />
           Humidity
           <span id=hum>56%</span>
         </li>
         <li class=wind>
+          <img src="svg/wind.svg" width="20px" />
           Wind
           <span id=windy>16 km/h</span>
         </li>
       </ul>
-      <div class="days">
-        <div class="row">
-          <div class="col">
-            Wed
-            <br />
-            <strong>20° </strong>
-            <br />
-            <i class="fa-solid fa-sun"></i>
-          </div>
-          <div class="col">
-            Th
-            <br />
-            <strong>22°</strong>
-            <br />
-            <i class="fa-solid fa-sun"></i>
-          </div>
-          <div class="col">
-            Fr
-            <br />
-            <strong>15° </strong>
-            <br />
-            <i class="fa-solid fa-cloud"></i>
-          </div>
-          <div class="col">
-            Sat
-            <br />
-            <strong>12° </strong>
-            <br />
-            <i class="fa-solid fa-cloud-bolt"></i>
-          </div>
-          <div class="col">
-            Sun
-            <br />
-            <strong>12° </strong>
-            <br />
-            <i class="fa-solid fa-sun"></i>
+        </div>
+       <div class="col-4">
+      <ul class="pres">
+        <li class=press> <img src="svg/barometer.svg" width="20px" />
+          <span id=pressure>20°</span>
+        </li>
+        <li class=sunrise>
+          <img src="svg/sunrise.svg" width="20px" />
+          Sunrise
+          <span id=sunRise>56%</span>
+        </li>
+        <li class=sunset>
+          <img src="svg/sunset.svg" width="20px" />
+          Sunset
+          <span id=sunSet>16</span>
+        </li>
+      </ul>
           </div>
         </div>
+      <div class="weather-forecast" id="forecast">  
       </div>
-      <div class="weather-forecast" id="forecast"></div>
+    </div>
     </div>
     <p><a href="https://github.com/AnnaGeorgievna/Weather-2.git">Open source</a> code by Anna Georgievna</p>
     <script
@@ -103,11 +81,6 @@
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
       crossorigin="anonymous"
     ></script>
-    <script
-      src="https://kit.fontawesome.com/22576a7611.js"
-      crossorigin="anonymous"
-    >
-    </script>
     <script src="src/index.js"></script>
   </body>
 </html>
