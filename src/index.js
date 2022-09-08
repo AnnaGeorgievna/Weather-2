@@ -36,24 +36,6 @@ let months = [
 let month = months[now.getMonth()];
 h2.innerHTML = `${day} ${currentDate} of ${month}, ${hours}:${minutes}`;
 
-function convertToCelsius(event) {
-  event.preventDefault();
-  let temp = document.querySelector("#temp");
-  temp.innerHTML = 19;
-}
-
-let celsius = document.querySelector("#celsius");
-celsius.addEventListener("click", convertToCelsius);
-
-function convertToFarehheit(event) {
-  event.preventDefault();
-  let temp = document.querySelector("#temp");
-  temp.innerHTML = 66;
-}
-
-let farenheit = document.querySelector("#farenheit");
-farenheit.addEventListener("click", convertToFarehheit);
-
 function search(event) {
   event.preventDefault();
   let h1 = document.querySelector("h1");
@@ -83,7 +65,18 @@ function showPosition(position) {
   axios.get(apiUrl).then(temp);
 }
 
+function timeConvert(timestamp) {
+  const date = new Date(timestamp * 1000);
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  const updateHours = hours < 10 ? "0" + hours : hours;
+  const updateMinutes = minutes < 10 ? "0" + minutes : minutes;
+  let time = updateHours + ":" + updateMinutes;
+  return time;
+}
+
 function temp(response) {
+  console.log(response.data);
   let temperature = Math.round(response.data.main.temp);
   let currentTemperature = document.querySelector("#temp");
   currentTemperature.innerHTML = `${temperature}`;
@@ -98,49 +91,69 @@ function temp(response) {
   let feelLike = document.querySelector("#feel");
   let tempFeelLike = Math.round(response.data.main.feels_like);
   feelLike.innerHTML = `${tempFeelLike}°`;
+  let pressure = document.querySelector("#pressure");
+  pressure.innerHTML = `Pressure ${response.data.main.pressure} hPa`;
+  let sunrise = document.querySelector("#sunRise");
+  sunrise.innerHTML = timeConvert(response.data.sys.sunrise);
+  let sunset = document.querySelector("#sunSet");
+  sunset.innerHTML = timeConvert(response.data.sys.sunset);
+  let information = document.querySelector("#info");
+  information.innerHTML = `${response.data.weather[0].description}`;
   let icon = document.querySelector("#icon");
-  icon.innerHTML=response.data
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  icon.setAttribute("alt", response.data.weather[0].description);
+  getForecast(response.data.coord);
+  console.log("Requested new data");
 }
 
 let currentButton = document.querySelector("#current-button");
 currentButton.addEventListener("click", currentLocation);
 
 function getForecast(coordinates) {
-  let apiKey = "6ad1060a55a617ecfcf5f36a0fb93c65";
+  console.log("Getting");
+  // let apiKey = "6ad1060a55a617ecfcf5f36a0fb93c65";
+  let apiKey = "22cfc19c6b9ae4b5cf96686bcd869368";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  //api.openweathermap.org/data/2.5/weather?lat=50.4333&lon=30.5167&appid=6ad1060a55a617ecfcf5f36a0fb93c65&units=metric
+  https: console.log(coordinates.lat);
+  console.log(coordinates.lon);
   axios.get(apiUrl).then(displayForecast);
+  axios.get(apiUrl).then(function (response) {
+    console.log(response);
+  });
+  // console.log("received result");
 }
 
 function displayForecast(response) {
-  let forecast = response.data.daily;
-
+  console.log(response.data.daily);
+  let forecastDay = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
-
   let forecastHTML = `<div class="row">`;
-  forecast.forEach(function (forecastDay, index) {
-    if (index < 6) {
+  forecastDay.forEach(function (dayWeather, index) {
+    if (index >= 0 && index < 6) {
       forecastHTML =
         forecastHTML +
-        `
-      <div class="col-2">
-        <div class="weather-forecast-date">${formatDay(forecastDay.dt)}</div>
+        `<div class="col-2">
+        <div class="weather-forecast-date">${formatDay(dayWeather.dt)}</div>
         <img
           src="http://openweathermap.org/img/wn/${
-            forecastDay.weather[0].icon
+            dayWeather.weather[0].icon
           }@2x.png"
           alt=""
           width="42"
         />
         <div class="weather-forecast-temperatures">
           <span class="weather-forecast-temperature-max"> ${Math.round(
-            forecastDay.temp.max
-          )}° </span>
+            dayWeather.temp.max
+          )}° </span> 
           <span class="weather-forecast-temperature-min"> ${Math.round(
-            forecastDay.temp.min
+            dayWeather.temp.min
           )}° </span>
         </div>
-      </div>
-  `;
+      </div>`;
     }
   });
 
