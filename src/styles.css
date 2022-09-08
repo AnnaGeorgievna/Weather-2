@@ -1,10 +1,23 @@
-.body {
+body {
+  background-color: #cfe9ee;
+}
+.appPage {
   max-width: 800px;
   min-width: 500px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #5682d7;
-  border-radius: 10px;
+  margin-top: 10em;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 24px;
+  border: 1px solid #fff;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(3px);
+  display: block;
+  padding: 40px;
+  background: linear-gradient(
+    0.3deg,
+    rgb(30, 161, 239) 0.9%,
+    rgb(49, 46, 252) 88.6%
+  );
   box-shadow: grey;
   color: white;
   font-family: Helvetica, sans-serif;
@@ -13,7 +26,7 @@ h1 {
   text-align: center;
   display: block;
   margin: 0 auto;
-  z-index: 2;
+  margin-top: 10px;
 }
 h2 {
   text-align: center;
@@ -22,6 +35,9 @@ h2 {
   font-size: 15px;
   font-weight: 200;
   padding-top: 5px;
+}
+h3 {
+  font-size: 20px;
 }
 h4 {
   font-size: 65px;
@@ -35,17 +51,20 @@ ul {
   display: block;
 }
 ul li {
-  text-align: center;
-  display: inline;
-  padding: 20px;
+  padding: 10px;
   margin: 5px;
-  background-color: #5682d7;
+  color: rgb(49, 46, 252);
+  background-color: #fff;
+  opacity: 0.85;
   border-radius: 10px;
+  border: #fff 1px solid;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
 .current {
   text-align: center;
   padding-top: 30px;
 }
+
 .col:hover {
   background-color: #fce34f;
   color: #5682d7;
@@ -69,7 +88,29 @@ ul li {
 }
 .btn-info {
   background-color: white;
+  border: #5682d7 1px solid;
+}
+.btn-info:hover {
+  background-color: #7199e8;
+  color: #fff;
+  border: #fff 1px solid;
 }
 p {
   text-align: center;
+  padding-top: 10px;
+  color: #fff;
+}
+#temp {
+  font-size: 70px;
+  text-align: right;
+}
+.col-2 {
+  text-align: center;
+  margin: 5 px;
+  padding: 20px;
+  display: block;
+  border-radius: 10px;
+}
+#city-search {
+  border-radius: 5px;
 }
