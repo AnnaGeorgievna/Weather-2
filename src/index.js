@@ -78,7 +78,6 @@ function timeConvert(timestamp) {
 }
 
 function temp(response) {
-  console.log(response.data);
   let temperature = Math.round(response.data.main.temp);
   let currentTemperature = document.querySelector("#temp");
   let tempFeelLike = Math.round(response.data.main.feels_like);
@@ -117,12 +116,9 @@ currentButton.addEventListener("click", currentLocation);
 function getForecast(coordinates) {
   let apiKey = "22cfc19c6b9ae4b5cf96686bcd869368";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-  https: console.log(coordinates.lat);
-  console.log(coordinates.lon);
+
   axios.get(apiUrl).then(displayForecast);
-  axios.get(apiUrl).then(function (response) {
-    console.log(response);
-  });
+  axios.get(apiUrl).then(displayForecastByHours);
 }
 
 function displayForecast(response) {
@@ -157,6 +153,41 @@ function displayForecast(response) {
 
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
+}
+function getHours(timestamp) {
+  let forecastHour = new Date(timestamp * 1000);
+
+  let time = forecastHour.getHours();
+  return time;
+}
+function displayForecastByHours(response) {
+  console.log(response.data.hourly);
+  let forecastByHours = response.data.hourly;
+  let forecastElementHours = document.querySelector("#forecastHours");
+  let hoursHTML = "";
+  forecastByHours.forEach(function (forecastHour, index) {
+    if (index >= 0 && index < 9) {
+      hoursHTML =
+        hoursHTML +
+        `<div class=weatherByHours>
+        <div class="weather-forecast-date">${getHours(
+          forecastHour.dt
+        )}:00 </div>
+        <img
+          src="http://openweathermap.org/img/wn/${
+            forecastHour.weather[0].icon
+          }@2x.png"
+          alt=""
+          width="42"
+        />
+          <span class="weather-forecast-temperature-min"> ${Math.round(
+            forecastHour.temp
+          )}° </span>
+      </div>`;
+    }
+  });
+  console.log(hoursHTML);
+  forecastElementHours.innerHTML = hoursHTML;
 }
 
 function formatDay(timestamp) {
