@@ -4,7 +4,7 @@ body {
 .appPage {
   max-width: 800px;
   min-width: 500px;
-  margin-top: 10em;
+  margin-top: 70px;
   margin-right: auto;
   margin-left: auto;
   border-radius: 24px;
@@ -103,14 +103,34 @@ p {
 #temp {
   font-size: 70px;
   text-align: right;
+  color: #fce34f;
 }
 .col-2 {
   text-align: center;
   margin: 5 px;
   padding: 20px;
   display: block;
+}
+.weather-forecast {
+  border: #fff 1px solid;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   border-radius: 10px;
+  background-color: #fce34f;
+  color: rgb(49, 46, 252);
 }
 #city-search {
   border-radius: 5px;
+}
+#forecastHours {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin: 15px;
+  padding: 10px;
+}
+.weatherByHours {
+  margin: 12px;
+  text-align: center;
+  font-size: 22px;
 }
