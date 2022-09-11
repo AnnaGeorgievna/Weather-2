@@ -48,7 +48,11 @@ function getCityWeather(city) {
   let units = "metric";
   let apiKey = "6ad1060a55a617ecfcf5f36a0fb93c65";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${apiKey}`;
-  axios.get(apiUrl).then(temp);
+  if (city) {
+    axios.get(apiUrl).then(temp);
+  } else {
+    alert("Please enter your city");
+  }
 }
 let form = document.querySelector("#input-form");
 form.addEventListener("submit", search);
@@ -116,13 +120,11 @@ currentButton.addEventListener("click", currentLocation);
 function getForecast(coordinates) {
   let apiKey = "22cfc19c6b9ae4b5cf96686bcd869368";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-
   axios.get(apiUrl).then(displayForecast);
   axios.get(apiUrl).then(displayForecastByHours);
 }
 
 function displayForecast(response) {
-  console.log(response.data.daily);
   let forecastDay = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
@@ -161,7 +163,6 @@ function getHours(timestamp) {
   return time;
 }
 function displayForecastByHours(response) {
-  console.log(response.data.hourly);
   let forecastByHours = response.data.hourly;
   let forecastElementHours = document.querySelector("#forecastHours");
   let hoursHTML = "";
@@ -186,7 +187,6 @@ function displayForecastByHours(response) {
       </div>`;
     }
   });
-  console.log(hoursHTML);
   forecastElementHours.innerHTML = hoursHTML;
 }
 
