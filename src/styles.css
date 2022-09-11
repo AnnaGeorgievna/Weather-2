@@ -26,7 +26,7 @@ h1 {
   text-align: center;
   display: block;
   margin: 0 auto;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 h2 {
   text-align: center;
@@ -61,10 +61,10 @@ ul li {
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
 .current {
-  text-align: center;
-  padding-top: 30px;
+  padding-top: 10px;
+  display: block;
+  position: relative;
 }
-
 .col:hover {
   background-color: #fce34f;
   color: #5682d7;
@@ -80,20 +80,16 @@ ul li {
   background-color: #fce34f;
   color: #5682d7;
 }
-#farenheit:hover {
-  cursor: pointer;
-}
-#celsius:hover {
-  cursor: pointer;
-}
 .btn-info {
   background-color: white;
   border: #5682d7 1px solid;
+  position: relative;
 }
 .btn-info:hover {
   background-color: #7199e8;
   color: #fff;
   border: #fff 1px solid;
+  position: relative;
 }
 p {
   text-align: center;
@@ -102,7 +98,6 @@ p {
 }
 #temp {
   font-size: 70px;
-  text-align: right;
   color: #fce34f;
 }
 .col-2 {
@@ -117,10 +112,12 @@ p {
   border-radius: 10px;
   background-color: #fce34f;
   color: rgb(49, 46, 252);
+  position: relative;
 }
 #city-search {
   border-radius: 5px;
 }
+
 #forecastHours {
   display: flex;
   align-items: center;
@@ -133,4 +130,17 @@ p {
   margin: 12px;
   text-align: center;
   font-size: 22px;
+}
+.description::first-letter {
+  text-transform: capitalize;
+}
+.description {
+  text-align: center;
+}
+.tempbox {
+  list-style: none;
+  align-items: start;
+  padding: 15px;
+  margin: 0 auto;
+  display: block;
 }
