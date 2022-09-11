@@ -15,69 +15,79 @@
   </head>
   <body>
     <div class="appPage">
-        <form id="input-form">
-            <input type="text"
-            placeholder="Enter a city..." 
-            autofocus="on"
-            class="city-search shadow-sm" id="city-search"/>
-        <button type ="submit" id="input-button" class="btn btn-primary">Search</button>
-        <button type="button" id="current-button"class="btn btn-info">Current</button>
-        </form>
-      <h1>Kyiv
-      </h1>
-      <h2>Today</h2>
+      <form id="input-form">
+        <input
+          type="text"
+          placeholder="Enter a city..."
+          autofocus="on"
+          class="city-search shadow-sm"
+          id="city-search"
+        />
+        <button type="submit" id="input-button" class="btn btn-primary">
+          Search
+        </button>
+        <button type="button" id="current-button" class="btn btn-info">
+          Current
+        </button>
+      </form>
+      <h1>Kyiv</h1>
+      <h2></h2>
       <div class="current">
         <div class="row">
+          <div class="col-4 desc">
+            <div class="tempbox">
+              <span id="temp"></span>
+              <small id="celsius">C°</small>
+              <img src="" id="icon" alt="" width="80" />
+              <div class="description" id="info"></div>
+            </div>
+          </div>
           <div class="col-4">
-              <img src="" id="icon" alt="" width="50"/>
-              <span id="temp"><strong></strong></span>
-              <span id="celsius">C°</span></br>
-              <span id=info></span>
-                </div>
-        <div class="col-4">
-      <ul class="wind">
-        <li class=feelLike>
-          <img src="svg/temperature.svg" width="20px" />
-          Feels like
-          <span id=feel>°</span>
-        </li>
-        <li class=humidity>
-          <img src="svg/humidity.svg" width="20px" />
-          Humidity
-          <span id=hum></span>
-        </li>
-        <li class=wind>
-          <img src="svg/wind.svg" width="20px" />
-          Wind
-          <span id=windy></span>
-        </li>
-      </ul>
-        </div>
-       <div class="col-4">
-      <ul class="pres">
-        <li class=press> <img src="svg/barometer.svg" width="18px" />
-          <span id=pressure></span>
-        </li>
-        <li class=sunrise>
-          <img src="svg/sunrise.svg" width="20px" />
-          Sunrise
-          <span id=sunRise></span>
-        </li>
-        <li class=sunset>
-          <img src="svg/sunset.svg" width="20px" />
-          Sunset
-          <span id=sunSet></span>
-        </li>
-      </ul>
+            <ul class="wind">
+              <li class="feelLike">
+                <img src="svg/temperature.svg" width="20px" />
+                Feels like
+                <span id="feel"></span>
+              </li>
+              <li class="humidity">
+                <img src="svg/humidity.svg" width="20px" />
+                Humidity
+                <span id="hum"></span>
+              </li>
+              <li class="wind">
+                <img src="svg/wind.svg" width="20px" />
+                Wind
+                <span id="windy"></span>
+              </li>
+            </ul>
+          </div>
+          <div class="col-4">
+            <ul class="pres">
+              <li class="press">
+                <img src="svg/barometer.svg" width="18px" />
+                <span id="pressure"></span>
+              </li>
+              <li class="sunrise">
+                <img src="svg/sunrise.svg" width="20px" />
+                Sunrise
+                <span id="sunRise"></span>
+              </li>
+              <li class="sunset">
+                <img src="svg/sunset.svg" width="20px" />
+                Sunset
+                <span id="sunSet"></span>
+              </li>
+            </ul>
           </div>
         </div>
-        <div class="forecastByHours" id="forecastHours">  
-        </div>
-      <div class="weather-forecast" id="forecast">  
+        <div class="forecastByHours" id="forecastHours"></div>
+        <div class="weather-forecast" id="forecast"></div>
       </div>
     </div>
-    </div>
-    <p><a href="https://github.com/AnnaGeorgievna/Weather-2.git">Open source</a> code by Anna Georgievna</p>
+    <p>
+      <a href="https://github.com/AnnaGeorgievna/Weather-2.git">Open source</a>
+      code by Anna Georgievna
+    </p>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
